@@ -1,0 +1,6 @@
+data/Train*.csv
+data/xgb_model.pkl
+__pycache__/
+*.pyc
+.DS_Store
+.env
