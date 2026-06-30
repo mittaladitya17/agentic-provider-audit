@@ -1,14 +1,9 @@
-datashape==0.5.4
-joblib==1.5.3
-matplotlib==3.8.0
-matplotlib-inline @ file:///Users/cbousseau/work/recipes/ci_py311/matplotlib-inline_1677918241899/work
-numpy==1.26.4
-numpydoc @ file:///Users/cbousseau/work/recipes/ci_py311/numpydoc_1677960919550/work
-pandas==1.5.3
-requests==2.33.1
-requests-file @ file:///Users/ktietz/demo/mc3/conda-bld/requests-file_1629455781986/work
-requests-toolbelt @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3fee1fr2ex/croot/requests-toolbelt_1690874011813/work
-scikit-learn==1.9.0
-shap==0.51.0
-streamlit==1.49.0
-xgboost==1.7.6
+pandas
+numpy
+xgboost
+shap
+scikit-learn
+matplotlib
+joblib
+requests
+streamlit
