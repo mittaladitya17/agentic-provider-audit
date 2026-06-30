@@ -169,8 +169,7 @@ st.markdown(
     "<div style='color:#555; font-size:0.8rem; text-align:center'>"
     "Decision-support tool only. Scores reflect provider-level billing pattern anomalies — "
     "not findings of fraud on individual claims. "
-    "Model trained on CMS Medicare data (Kaggle). "
-    "Built for Cotiviti intern assessment."
+    "Model trained on CMS Medicare data from Kaggle. "
     "</div>",
     unsafe_allow_html=True
 )
