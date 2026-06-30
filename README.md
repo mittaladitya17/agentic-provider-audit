@@ -55,6 +55,7 @@ streamlit run app.py
 ## Demo
 
 The Streamlit app loads pre-generated investigative briefs for 10 flagged providers. No API key required to run the app after Step 4 completes.
+Streamlit app link: https://agentic-claim-audit-nmti7brefbc49reqzyebnn.streamlit.app/
 
 ## Repository
 
