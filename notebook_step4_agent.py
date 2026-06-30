@@ -1,6 +1,9 @@
+from time import time
+
 import pandas as pd
 import numpy as np
-import json, time
+import json
+import time
 import os
 import requests
 
