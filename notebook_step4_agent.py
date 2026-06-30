@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-import json, time, os
+import json, time
+import os
 import requests
 
 DATA_DIR = "./data"
