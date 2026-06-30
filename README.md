@@ -1,36 +1,61 @@
-# Agentic Claim Audit System
+# Provider Fraud Intelligence System
 **Cotiviti Intern Assessment — Topic 2: Clinical Decision Making and Pattern Recognition**
 
 ## What This Does
-An ML pipeline that detects suspicious Medicare provider billing patterns, 
-paired with an LLM-powered audit agent that generates structured investigative 
-briefs — ready to hand directly to an SIU investigator.
+
+A two-stage system for detecting and explaining provider-level billing fraud in Medicare claims data.
+
+**Stage 1 — Detection:** An XGBoost classifier scores each provider by how anomalous their overall billing patterns are, using 23 features aggregated from inpatient claims, outpatient claims, and beneficiary data. The model outputs a fraud probability per provider (ROC-AUC: 0.95, PR-AUC: 0.74).
+
+**Stage 2 — Explanation:** For each flagged provider, a Claude-powered agent receives the top SHAP-explained billing anomalies with population comparisons, identifies the most likely fraud scheme, and generates a structured investigative brief ready for SIU review.
+
+> **Scope:** This system operates at the provider level. Scores reflect billing pattern anomalies across a provider's full claims history — not findings on any individual claim.
 
 ## Architecture
-1. XGBoost classifier scores providers by fraud risk (ROC-AUC: 0.95)
-2. SHAP explains which billing features drove each score
-3. Claude (claude-sonnet-4-6) generates a 6-section investigative brief per flagged provider
-4. Streamlit app displays briefs alongside SHAP charts
+
+```
+Raw Claims Data (4 CSVs)
+        ↓
+Feature Engineering (provider-level aggregation)
+        ↓
+XGBoost Classifier → Fraud Probability per Provider
+        ↓
+SHAP → Top billing behaviors driving each score
+        ↓
+Claude Agent → Structured Investigative Brief
+        ↓
+Streamlit App → Investigator-facing UI
+```
 
 ## Setup
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Data
-Download from Kaggle: [Healthcare Provider Fraud Detection Analysis](https://www.kaggle.com/datasets/rohitrox/healthcare-provider-fraud-detection-analysis)  
+
+Download from Kaggle: [Healthcare Provider Fraud Detection Analysis](https://www.kaggle.com/datasets/rohitrox/healthcare-provider-fraud-detection-analysis)
+
 Place all four Train CSV files in `./data/`
 
 ## Run in Order
+
 ```bash
 python notebook_step1_profiling.py
 python notebook_step2_features.py
 python notebook_step3_model.py
+
 export ANTHROPIC_API_KEY="your-key-here"
 python notebook_step4_agent.py
+
 streamlit run app.py
 ```
 
 ## Demo
-The app loads pre-generated investigative briefs for 10 flagged providers.  
-No API key required to run the Streamlit app after Step 4 is complete.
+
+The Streamlit app loads pre-generated investigative briefs for 10 flagged providers. No API key required to run the app after Step 4 completes.
+
+## Repository
+
+GitHub: [github.com/mittaladitya17/agentic-claim-audit](https://github.com/mittaladitya17/agentic-claim-audit)
