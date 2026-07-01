@@ -120,7 +120,8 @@ with right:
         tab1, tab2 = st.tabs([" Investigative Brief", " Billing Pattern Analysis"])
 
         with tab1:
-            st.markdown(entry["brief"])
+            safe_brief = entry["brief"].replace("$", "\\$")
+            st.markdown(safe_brief)
 
         with tab2:
             match = shap_df[shap_df["Provider"] == selected]
